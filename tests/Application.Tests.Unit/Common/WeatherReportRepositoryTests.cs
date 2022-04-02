@@ -10,7 +10,7 @@ using NUnit.Framework;
 
 namespace Application.Tests.Unit.Common;
 
-public class CreateWeatherReportTests
+public class WeatherReportRepositoryTests
 {
     private IApplicationDbContext _dbContext = null;
     
@@ -24,7 +24,7 @@ public class CreateWeatherReportTests
     }
 
     [Test]
-    public async Task Add_WeatherReportsShouldNotBeEmptyAfterAdding()
+    public async Task Create_WeatherReportsShouldNotBeEmptyAfterAdding()
     {
         // Arrange
         var createWeatherReport = new WeatherReportRepository(_dbContext);
