@@ -26,7 +26,7 @@ public static class DependencyInjection
             }
         }
 
-        services.AddTransient<CreateWeatherReport>();
+        services.AddTransient<WeatherReportRepository>();
         
         return services;
     }

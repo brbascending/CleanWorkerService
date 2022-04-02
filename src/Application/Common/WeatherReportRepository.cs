@@ -3,16 +3,16 @@ using CleanWorkerService.Domain.Entities;
 
 namespace CleanWorkerService.Application.Common;
 
-public class CreateWeatherReport
+public class WeatherReportRepository
 {
     private readonly IApplicationDbContext _dbContext;
 
-    public CreateWeatherReport(IApplicationDbContext dbContext)
+    public WeatherReportRepository(IApplicationDbContext dbContext)
     {
         _dbContext = dbContext;
     }
 
-    public async Task<int> Add(WeatherReport report)
+    public async Task<int> Create(WeatherReport report)
     {
         _dbContext.WeatherReports.Add(report);
         return await _dbContext.SaveChangesAsync(CancellationToken.None);

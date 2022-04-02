@@ -27,7 +27,7 @@ public class CreateWeatherReportTests
     public async Task Add_WeatherReportsShouldNotBeEmptyAfterAdding()
     {
         // Arrange
-        var createWeatherReport = new CreateWeatherReport(_dbContext);
+        var createWeatherReport = new WeatherReportRepository(_dbContext);
 
         var report = new WeatherReport()
         {
@@ -37,7 +37,7 @@ public class CreateWeatherReportTests
         };
         
         // Act
-        await createWeatherReport.Add(report);
+        await createWeatherReport.Create(report);
         
         // Assert
         _dbContext.WeatherReports.Should().ContainSingle();
