@@ -1,6 +1,5 @@
 using CleanWorkerService.Application;
 using CleanWorkerService.Application.Common.Interfaces;
-using CleanWorkerService.Application.Common.Models.Configuration;
 using CleanWorkerService.ConsoleUI;
 using CleanWorkerService.Infrastructure;
 using Serilog;

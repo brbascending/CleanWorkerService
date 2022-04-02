@@ -1,8 +1,6 @@
 using CleanWorkerService.Application.Common;
 using CleanWorkerService.Application.Common.Interfaces;
 using CleanWorkerService.Application.Common.Models.Configuration;
-using CleanWorkerService.Domain.Entities;
-using CleanWorkerService.Infrastructure.Services;
 using Microsoft.Extensions.Options;
 
 namespace CleanWorkerService.ConsoleUI;
