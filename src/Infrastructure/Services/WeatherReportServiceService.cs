@@ -6,17 +6,17 @@ using Microsoft.Extensions.Options;
 
 namespace CleanWorkerService.Infrastructure.Services;
 
-public class WeatherReportService : IWeatherReport
+public class WeatherReportServiceService : IWeatherReportService
 {
-    private readonly ILogger<WeatherReportService> _logger;
-    private readonly IDateTime _dateTime;
+    private readonly ILogger<WeatherReportServiceService> _logger;
+    private readonly IDateTimeService _dateTimeService;
     private readonly Random _rnd;
     private readonly WeatherReportSettings _settings;
 
-    public WeatherReportService(ILogger<WeatherReportService> logger, IDateTime dateTime, Random rnd, IOptions<WeatherReportSettings> settings)
+    public WeatherReportServiceService(ILogger<WeatherReportServiceService> logger, IDateTimeService dateTimeService, Random rnd, IOptions<WeatherReportSettings> settings)
     {
         _logger = logger;
-        _dateTime = dateTime;
+        _dateTimeService = dateTimeService;
         _rnd = rnd;
         _settings = settings.Value;
     }
@@ -27,7 +27,7 @@ public class WeatherReportService : IWeatherReport
     {
         return new WeatherReport()
         {
-            Created = _dateTime.Now,
+            Created = _dateTimeService.Now,
             City = cities[_rnd.Next(3)],
             Temperature = _rnd.Next(_settings.MinTemperature, _settings.MaxTemperature)
         };

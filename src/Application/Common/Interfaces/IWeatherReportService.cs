@@ -2,7 +2,7 @@
 
 namespace CleanWorkerService.Application.Common.Interfaces;
 
-public interface IWeatherReport
+public interface IWeatherReportService
 {
     WeatherReport GetRandom();
 }

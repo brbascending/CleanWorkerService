@@ -27,8 +27,8 @@ public static class DependencyInjection
         services.AddSingleton<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
         
         services.AddTransient<Random>();
-        services.AddTransient<IDateTime, DateTimeService>();
-        services.AddTransient<IWeatherReport, WeatherReportService>();
+        services.AddTransient<IDateTimeService, DateTimeService>();
+        services.AddTransient<IWeatherReportService, WeatherReportServiceService>();
         
         return services;
     }

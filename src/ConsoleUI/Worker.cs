@@ -8,17 +8,17 @@ namespace CleanWorkerService.ConsoleUI;
 public class Worker : BackgroundService
 {
     private readonly ILogger<Worker> _logger;
-    private readonly IDateTime _dateTime;
-    private readonly IWeatherReport _weatherReport;
+    private readonly IDateTimeService _dateTimeService;
+    private readonly IWeatherReportService _weatherReportService;
     private readonly WeatherReportRepository _weatherReportRepository;
     private readonly CooldownSettings _settings;
 
-    public Worker(ILogger<Worker> logger, IDateTime dateTime, IOptions<CooldownSettings> settings, IWeatherReport weatherReport,
-        WeatherReportRepository weatherReportRepository)
+    public Worker(ILogger<Worker> logger, IDateTimeService dateTimeService, IOptions<CooldownSettings> settings,
+        IWeatherReportService weatherReportService, WeatherReportRepository weatherReportRepository)
     {
         _logger = logger;
-        _dateTime = dateTime;
-        _weatherReport = weatherReport;
+        _dateTimeService = dateTimeService;
+        _weatherReportService = weatherReportService;
         _weatherReportRepository = weatherReportRepository;
         _settings = settings.Value;
     }
@@ -27,7 +27,7 @@ public class Worker : BackgroundService
     {
         while (true)
         {
-            var report = _weatherReport.GetRandom();
+            var report = _weatherReportService.GetRandom();
             _logger.LogInformation("Weather Report: {weatherReport}", report);
             await _weatherReportRepository.Create(report);
             await Task.Delay(_settings.Cd, stoppingToken);
